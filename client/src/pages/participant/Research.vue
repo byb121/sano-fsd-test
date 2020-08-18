@@ -17,7 +17,7 @@
                                 My Studies
                             </h2>
                         </div>
-                        List the studies here...
+                        {{studiesList}}
                     </section>
                 </div>
                 </div>
@@ -36,6 +36,25 @@ export default {
     name: "Research",
     components: {
         LoggedinSidebarTemplate,
+    },
+    data() {
+        return {
+            studiesList: 'Loading',
+        };
+    },
+    mounted() {
+        this.$api.pub
+            .get_studies()
+            .then((response) => {
+                console.log('got to the endpoint.')
+                console.log(response)
+                this.studiesList = response.data.length
+            })
+            .catch(() => {
+                console.log('failed to get studies.')
+                this.studiesList = 0
+                this.loading = false;
+            });
     },
 };
 </script>

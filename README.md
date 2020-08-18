@@ -5,7 +5,7 @@
 * Install Python 3.8 and Node 12.x.x
 * Install Postgres. For Mac, we recommend Postgres app: https://postgresapp.com/
 * Run a local postgres server and create a new database called `fsd`
-* Set `connection_url` key in `local-config.json` to the database URL
+* Set `connection_string` key in `server/local-config.json` to the database URL
 * Within the `server/` directory, seed your local database with example studies by running:
   - `pip install virtualenv`
   - `virtualenv -p python3 venv`
