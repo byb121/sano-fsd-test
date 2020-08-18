@@ -8,7 +8,7 @@ import pytz
 from flask import current_app as app
 
 from core.config import config
-from core.models import Users
+from core.models import Users, Studies
 
 jwt_secret = config["jwt_secret"]
 secret_salt = config["secret_salt"].encode("utf-8")
@@ -118,6 +118,12 @@ class AuthStore(object):
             user.save()
             return user
         return None
+
+    # Studies
+
+    def get_studies(self):
+        query = Studies.select(Studies.title, Studies.description)
+        return query.dicts() if query else []
 
 
 auth_store = AuthStore()

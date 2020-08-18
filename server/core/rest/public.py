@@ -24,3 +24,14 @@ public_api = Blueprint("public_api", __name__)
 # -------
 # Write you endpoint to retrieve all available studies here.
 # -------
+
+@public_api.route("/studies", methods=["GET"])
+def get_all_studies():
+    studies = auth_store.get_studies()
+    if studies:
+        logger.info(f"Found {len(studies)} studies.")
+    else:
+        logger.info(f"Found no study.")
+        return "Found no study", 
+
+    return jsonify(studies), 200

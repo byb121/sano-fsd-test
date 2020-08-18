@@ -42,6 +42,7 @@ CORS(app, supports_credentials=True)
 
 
 app.register_blueprint(auth_api)
+app.register_blueprint(public_api)
 
 
 @app.after_request

@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 # load this project's python environment
 source venv/bin/activate
@@ -6,7 +7,7 @@ source venv/bin/activate
 export FLASK_ENV=development
 
 hashfile="requirements.md5"
-hash=$(md5sum requirements.txt)
+hash=$(md5sum requirements.txt)  # TODO: md5sum could not exist in some OS
 
 if [ -f "$hashfile" ]
 then
